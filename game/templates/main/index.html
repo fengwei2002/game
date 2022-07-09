@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BallGame</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        />
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/game.css' %}" />
+    </head>
+    <body>
+        <div id="game_dom_root"></div>
+
+        <script type="module">
+            // 模块方式引入 game.js 中的 Game
+            import { Game } from "{% static 'js/dist/game.js' %}";
+
+            document.addEventListener("DOMContentLoaded", function () {
+                let game = new Game("game_dom_root");
+            });
+            // 文件加载完毕之后创建一个 game 对象
+        </script>
+    </body>
+</html>
